@@ -19,6 +19,6 @@ BUILDROOT_PROJ=$work/os/buildroot
 
 # Image SD card
 echo "Imaging sd card..."
-time sudo dd if=$BUILDROOT_PROJ/output/images/sdcard-install.img of=/dev/sdb bs=64k
+time sudo dd if=$BUILDROOT_PROJ/output/images/sdcard.img of=/dev/sdb bs=64k
 echo "Done."
 
