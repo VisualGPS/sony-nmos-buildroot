@@ -71,8 +71,8 @@ echo -e "${TAG} Copy Cobalt patches..."
 cp -r $work/os/patches/buildroot/* $work/os/buildroot/
 
 # Apply patches to buildroot itself
-# Setup the ground hog environment
-echo -e "${TAG} Setup buildroot to use the groundhog board..."
+# Setup the environment
+echo -e "${TAG} Setup buildroot to use the raspberry pi 3 with our custom config..."
 cd $work/os/buildroot
 make sony_nmos_rpi3_defconfig
 

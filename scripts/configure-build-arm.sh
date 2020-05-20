@@ -17,7 +17,7 @@ fi
 #
 # Defines the script setup
 #
-PROJ_NAME="reg-manager"
+PROJ_NAME="sony-nmos"
 BUILD_DIR=${work}/${PROJ_NAME}Build
 SEARCH_DIR=${work}/software/source
 # glibc reference to toolchain
@@ -94,13 +94,10 @@ LIBROOT=${work}/os/buildroot/output/build
 OPENSSL_LIB_DIR=${work}/os/buildroot/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/lib
 
 #OPENSSL_LINK=-DCMAKE_EXE_LINKER_FLAGS_INIT="-L ${LIBROOT} -Wl,-rpath-link=${OPENSSL_LIB_DIR} -latomic"
-cmake ${CMAKE_COMMON} -DCMAKE_BUILD_TYPE=Release -DUSE_CONAN:BOOL="0" ${SEARCH_DIR} ${TOOL_CHAIN_SW} -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DCMAKE_EXE_LINKER_FLAGS_INIT="-L ${LIBROOT} -Wl,-rpath-link=${OPENSSL_LIB_DIR} -latomic"
+cmake ${CMAKE_COMMON} -DCMAKE_BUILD_TYPE=Release -DUSE_CONAN:BOOL="0" ${SEARCH_DIR} ${TOOL_CHAIN_SW}
 
-
-#cmake ${CMAKE_COMMON} -DCMAKE_BUILD_TYPE=Release -DUSE_CONAN:BOOL="0" ${SEARCH_DIR} ${TOOL_CHAIN_SW} -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
-
-echo -e "${TAG_GREEN}Done."
-echo -e "${TAG_GREEN}${BUILD_DIR} can be used as your eclipse workspace."
-echo -e "${TAG_GREEN}You also cd into ${RELEASE_DIR}"
-echo -e "${TAG_GREEN}or ${DEBUG_DIR}"
-echo -e "${TAG_GREEN}and perform a make."
+echo -e "${TAG_GREEN} Done."
+echo -e "${TAG_GREEN} ${BUILD_DIR} can be used as your eclipse workspace."
+echo -e "${TAG_GREEN} You also can cd into ${RELEASE_DIR}"
+echo -e "${TAG_GREEN} or ${DEBUG_DIR}"
+echo -e "${TAG_GREEN} and perform a make."
