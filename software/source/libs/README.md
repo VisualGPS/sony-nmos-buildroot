@@ -1,3 +1,3 @@
 # libs
 
-This directory holds Cobalt controlled libraries.
+This directory holds libraries controlled by this project.
