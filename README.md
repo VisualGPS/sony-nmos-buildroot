@@ -26,7 +26,7 @@ export work=/home/someuser/Source/sony-nmos-buildroot
 
 ## Build
 
-### Build Linux Kernel and File System
+### Build Linux Kernel, File System, and Sony NMOS
 
 ### Build for arm
 
