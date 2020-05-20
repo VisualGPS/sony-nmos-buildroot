@@ -1,0 +1,3 @@
+[submodule "software/source/libs-ext/nmos-cpp"]
+	path = software/source/libs-ext/nmos-cpp
+	url = https://github.com/sony/nmos-cpp.git
