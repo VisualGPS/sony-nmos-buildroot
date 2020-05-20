@@ -8,31 +8,25 @@
 
 ## Introduction
 
-This project is to demonstrate the sony-nmos (Networked Media Open Specifications) using Buildroot. 
+This project is to demonstrate the sony-nmos (Networked Media Open Specifications) using Buildroot. The project has only two scripts to run. The first will download buildroot, setup the dependencies and then build the Linux Core and associated root file system.
+
+### The `work` Environment
+
+The project does require one environment variable defined, '`work`'. This variable simply points to the root directory for this project. For example, if the project is located in `~/Source/sony-nmos-buildoot`, then export would look like:
+
+```bash
+export work=/home/someuser/Source/sony-nmos-buildroot
+```
 
 ## Dependencies
 
-- c/c++
+- git
+- c/c++ (build essentials)
 - cmake
-- Avahi (libavahi-compat, libavahi-compat-libdnssd-dev)
-- OpenSSL (libssl-dev)
-- https (TLS)
-- websocketpp
-- ptp (Linux PTP Project)
-- [C++ REST SDK](https://github.com/Microsoft/cpprestsdk) Note: This library clones it's own websocketpp
-  - libboost-dev
-    - boost-random-dev
-    - boost-system-dev
-    - boost-filesystem-dev
-    - boost-chrono-dev
-    - boost-atomic-dev
-    - boost-date_time-dev
-    - boost-regex-dev
-    - boost-thread-dev
 
 ## Build
 
-Currently this is constantly changing. 
+### Build Linux Kernel and File System
 
 ### Build for arm
 
@@ -41,11 +35,4 @@ Currently this is constantly changing.
 - cd $work/reg-managerBuild/reg-manager_release
 - make
 
-## Embedded Notes
 
-### Buildroot Notes
-
-- Added libcpprestsdk (this will add a some boost libraries)
-- Added websocketpp
-- Added local in tool-chain (BR2_TOOLCHAIN_BUILDROOT_LOCALE=y)
-- Added Avahi
