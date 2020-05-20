@@ -29,7 +29,7 @@ if [ -z ${work}  ]
 fi
 
 # Check if the os as been built (If the OS was built previously, then at least the sdcard.img file should exist)
-if [ !-f $work/os/buildroot/output/images/sdcard.img ]; then
+if [ ! -f $work/os/buildroot/output/images/sdcard.img ]; then
     echo -e "${TAG_ERROR} It appears that OS and files system has not been build."
     echo -e "${TAG_ERROR} Please run ${work}/scripts/build.os script."
     exit 1
