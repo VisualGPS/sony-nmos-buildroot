@@ -31,7 +31,6 @@ export work=/home/someuser/Source/sony-nmos-buildroot
 ### Build for arm
 
 - run $work/scripts/build-os.sh
-- run $work/scripts/configure-build-arm.sh
 - run $work/scripts/make-release.sh
 
 
