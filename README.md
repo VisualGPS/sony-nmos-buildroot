@@ -45,7 +45,7 @@ The default login for the target is root and the password is raspberry. There sh
 - nmos-cpp-registry
 - nmos-cpp-test
 
-Follow the instruction from the sony-cpp GitHub repository.
+Follow the instruction from the sony nmos-cpp GitHub repository.
 
 ## Scripts
 
