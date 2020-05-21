@@ -10,12 +10,13 @@ CR_PURPLE='\033[1;35m'
 CR_NORMAL='\033[0m' # No Color
 
 # This is prepended to a all echos so you can search for them
-TAG=">>> "
-TAG_YELLOW="${CR_YELLOW}${TAG}${CR_NORMAL}"
-TAG_GREEN="${CR_GREEN}${TAG}${CR_NORMAL}"
-TAG_BLUE="${CR_BLUE}${TAG}${CR_NORMAL}"
-TAG_PURPLE="${CR_PURPLE}${TAG}${CR_NORMAL}"
-TAG_ERROR="${CR_RED}${TAG}[ERROR]:${CR_NORMAL} "
+TAG_TXT=">>> "
+TAG_YELLOW="${CR_YELLOW}${TAG_TXT}${CR_NORMAL}"
+TAG_GREEN="${CR_GREEN}${TAG_TXT}${CR_NORMAL}"
+TAG_BLUE="${CR_BLUE}${TAG_TXT}${CR_NORMAL}"
+TAG_PURPLE="${CR_PURPLE}${TAG_TXT}${CR_NORMAL}"
+TAG_ERROR="${CR_RED}${TAG_TXT}[ERROR]:${CR_NORMAL} "
+TAG=${TAG_GREEN}
 
 # Check if $work has been defined.
 if [ -z ${work}  ]
@@ -36,7 +37,7 @@ if [ ! -f $work/os/buildroot/output/images/sdcard.img ]; then
 fi
 
 # Configure sony-nmos
-echo -e "${TAG_GREEN} Configuring sony-nmos"
+echo -e "${TAG} Configuring sony-nmos"
 $work/scripts/configure-build-arm.sh
 
 # Check result
@@ -53,5 +54,22 @@ if [ $? -ne 0 ]; then
     exit -1
 fi
 
+# Install the sony-nmos executables into our tarket root
+echo -e "${TAG} Installing executables..."
+TARGET_ROOT_USER=${work}/os/buildroot/rootfs-overlay/root
+NMOS_EXEC_SOURCE=${work}/sony-nmosBuild/sony-nmos_release/libs-ext/nmos-cpp/Development
+cp ${NMOS_EXEC_SOURCE}/nmos-cpp-node ${TARGET_ROOT_USER}
+cp ${NMOS_EXEC_SOURCE}/nmos-cpp-registry ${TARGET_ROOT_USER}
+cp ${NMOS_EXEC_SOURCE}/nmos-cpp-test ${TARGET_ROOT_USER}
 
-echo -e "${TAG_GREEN} Done. Now you can create your sdcard image."
+# Recreate file-system
+echo -e "${TAG} Invoking Buildroot to recreate the new disk image..."
+cd $work/os/buildroot
+# Note: do not use the -j option here, butildroot does this automatically
+make
+if [ $? -ne 0 ]; then
+    echo -e "${TAG_ERROR} Could not recreate the disk image"
+    exit -1
+fi
+
+echo -e "${TAG} Done. Now you can create your sdcard image."

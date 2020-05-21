@@ -44,11 +44,6 @@ fi
 # Create the buildroot environment
 #
 
-# Build the bootloaders
-echo -e "${TAG} Building bootloades..."
-cd $work/os/boot
-./rebuild.sh
-
 # Delete old buildroot directory
 echo -e "${TAG} Deleting old buildroot directory..."
 rm -rf $work/os/buildroot
