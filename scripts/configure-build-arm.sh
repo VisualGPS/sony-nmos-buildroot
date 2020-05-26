@@ -77,24 +77,16 @@ fi
 #
 # Run cmake and configure for eclipse and generate build file for the project
 #
-# -DCMAKE_EXE_LINKER_FLAGS_INIT="-L ${RPI_LIBS}/lib -L ${SYSROOT} -Wl,-rpath-link=${SYSROOT}:${OPENSSL_LIB_DIR}:${RPI_LIBS}/lib -latomic"
-CMAKE_COMMON=`-G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON`
 
 # Debug config
-# echo -e "${TAG_GREEN}Running cmake for debug configuration..."
-# cd ${BUILD_DIR}/${PROJ_NAME}_debug
-# cmake ${CMAKE_COMMON} -DCMAKE_BUILD_TYPE=Debug ${SEARCH_DIR} ${TOOL_CHAIN_SW}
-# echo -e "${TAG_GREEN}Running cmake for release configuration..."
+echo -e "${TAG_GREEN}Running cmake for debug configuration..."
+cd ${BUILD_DIR}/${PROJ_NAME}_debug
+cmake -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DUSE_CONAN:BOOL="0" ${SEARCH_DIR} ${TOOL_CHAIN_SW}
 
 # Releasee config
+echo -e "${TAG_GREEN}Running cmake for release configuration..."
 cd ${BUILD_DIR}/${PROJ_NAME}_release
-# My attempt to fix the OpenSSL link error
-LIBROOT=${work}/os/buildroot/output/build
-#OPENSSL_LIB_DIR=${LIBROOT}/libopenssl-1.1.1g
-OPENSSL_LIB_DIR=${work}/os/buildroot/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/lib
-
-#OPENSSL_LINK=-DCMAKE_EXE_LINKER_FLAGS_INIT="-L ${LIBROOT} -Wl,-rpath-link=${OPENSSL_LIB_DIR} -latomic"
-cmake ${CMAKE_COMMON} -DCMAKE_BUILD_TYPE=Release -DUSE_CONAN:BOOL="0" ${SEARCH_DIR} ${TOOL_CHAIN_SW}
+cmake -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DUSE_CONAN:BOOL="0" ${SEARCH_DIR} ${TOOL_CHAIN_SW}
 
 echo -e "${TAG_GREEN} Done."
 echo -e "${TAG_GREEN} ${BUILD_DIR} can be used as your eclipse workspace."
