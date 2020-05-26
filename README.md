@@ -11,7 +11,7 @@
 
 ## Introduction
 
-This project is to demonstrate the Sony [nmos-cpp](https://github.com/sony/nmos-cpp) (Networked Media Open Specifications) using Buildroot and the Raspberry Pi. The project has only two scripts to run. The first will download buildroot, configure, and then build the Linux kernel and associated root file system. The second will configure, build, and install the nmos-cpp node and registry examples.
+This project is to demonstrate the Sony [nmos-cpp](https://github.com/sony/nmos-cpp) (Networked Media Open Specifications) using Buildroot and the Raspberry Pi. The project has only two scripts to run. The first will download buildroot, configure, and build the Linux kernel and associated root file system. The second will configure, build, and install the nmos-cpp node and registry examples.
 
 ## The `work` Environment Variable
 
@@ -41,9 +41,14 @@ This project is built using scripts or you can build it manually.
 
 The default login for the target is root and the password is raspberry. There should be three executable files located in `/root`
 
-- nmos-cpp-node
-- nmos-cpp-registry
-- nmos-cpp-test
+```bash
+[root@sony-nmos ~]$ ls -l
+total 16029
+-rwxr-xr-x    1 root     root       6727884 May 21 20:04 nmos-cpp-node
+-rwxr-xr-x    1 root     root       5956884 May 21 20:04 nmos-cpp-registry
+-rwxr-xr-x    1 root     root       3729996 May 21 20:04 nmos-cpp-test
+[root@sony-nmos ~]$ 
+```
 
 Follow the instruction from the sony nmos-cpp GitHub repository.
 
