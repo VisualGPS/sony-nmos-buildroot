@@ -44,6 +44,3 @@ target_link_libraries(sandbox
     nmos-cpp_static
     ${Boost_LIBRARIES}
 )
-
-
-
