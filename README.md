@@ -37,6 +37,14 @@ This project is built using scripts or you can build it manually.
 - run $work/scripts/make-release.sh
 - Burn an SD card from `$work/os/buildroot/output/images/sdcard.img` and insert into the Raspberry Pi.
 
+## Burning an SD Card
+
+Use the dd command to burn the image to the SD card. Below is an example of burning the SD image assuming your SD card is located at `/dev/sdb`.
+
+```bash
+sudo dd if=$work/os/buildroot/output/images/sdcard.img of=/dev/sdb bs=64k
+```
+
 ## Running
 
 The default login for the target is root and the password is raspberry. There should be three executable files located in `/root`
