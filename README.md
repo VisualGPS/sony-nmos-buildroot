@@ -29,6 +29,8 @@ export work=/home/someuser/Source/sony-nmos-buildroot
 
 ## Build
 
+**NOTE:** This project was built using Ubuntu 20.04.
+
 This project is built using scripts or you can build it manually. 
 
 ### Build Linux Kernel, File System, and Sony NMOS
